@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://jp304puhdpc3"]
+
+[ext_resource type="Script" uid="uid://0rocxnxqtxs5" path="res://scripts/follow_path.gd" id="1_3qym3"]
+[ext_resource type="PackedScene" uid="uid://baex1rii77ttc" path="res://scenes/npc.tscn" id="2_ssrfn"]
+
+[node name="NpcPath" type="Path2D"]
+script = ExtResource("1_3qym3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(284, -269)
+rotation = 1.16678
+
+[node name="NPC" parent="PathFollow2D" instance=ExtResource("2_ssrfn")]

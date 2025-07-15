@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://bccon6u7ngrhw"]
+[gd_scene load_steps=9 format=4 uid="uid://bccon6u7ngrhw"]
 
 [ext_resource type="Texture2D" uid="uid://teb68uuw1bnt" path="res://icon.svg" id="1_gakxr"]
 [ext_resource type="PackedScene" uid="uid://tkuga7p37vnk" path="res://scenes/player.tscn" id="2_qc0hx"]
 [ext_resource type="PackedScene" uid="uid://jp304puhdpc3" path="res://scenes/npc_path.tscn" id="3_qc0hx"]
+[ext_resource type="Script" uid="uid://kx272j1wk4ri" path="res://resources/npc_dialog.gd" id="4_nexl8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nexl8"]
 texture = ExtResource("1_gakxr")
@@ -80,6 +81,13 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="Resource" id="Resource_nexl8"]
+script = ExtResource("4_nexl8")
+dialog = Dictionary[int, Array]({
+0: ["Hello", "Still Here?"]
+})
+metadata/_custom_type_script = "uid://kx272j1wk4ri"
+
 [node name="Screen" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -93,4 +101,5 @@ position_smoothing_enabled = true
 
 [node name="NpcPath" parent="." instance=ExtResource("3_qc0hx")]
 curve = SubResource("Curve2D_nexl8")
-speed = 0.5
+npc_dialog = SubResource("Resource_nexl8")
+speed = 100.0

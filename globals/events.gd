@@ -1,0 +1,6 @@
+extends Node
+
+signal player_started_interacting
+signal player_stopped_interacting
+signal interaction_started
+signal interaction_stopped

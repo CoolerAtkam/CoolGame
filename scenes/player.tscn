@@ -18,3 +18,7 @@ texture = ExtResource("1_3vyb7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -64)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="InteractionTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="InteractionTimer" to="." method="_on_interaction_timeout"]

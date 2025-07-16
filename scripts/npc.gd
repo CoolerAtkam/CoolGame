@@ -1,42 +1,38 @@
-class_name NPC
-extends Area2D
+extends CharacterBody2D
 
-signal interaction_started
-signal interaction_stopped
+@export var speed: float
+@export var target_markers: Node
+@export var dialog: NpcDialog
 
-@onready var interactable: Sprite2D = $Interactable
+@onready var navigation: NavigationAgent2D = $NavigationAgent2D
 
-var player_interacting: bool = false
-var player_in_area: bool = false
-
-var npc_dialog: NpcDialog
+var postions: Array[Vector2]
+var postion_index: int = 0
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
-	Events.player_started_interacting.connect(_on_player_starts_interaction)
-	Events.player_stopped_interacting.connect(_on_player_stopped_interaction)
-
+	postions.append(global_position)
+	for target in target_markers.get_children():
+		if target is Marker2D:
+			postions.append(target.global_position)
+	actor_setup.call_deferred()
 
 func _physics_process(_delta: float) -> void:
-	if player_interacting and player_in_area:
-		interaction_started.emit()
+	if navigation.is_navigation_finished():
+		set_next_target()
+	
+	var next_position: Vector2 = navigation.get_next_path_position()
+
+	velocity = global_position.direction_to(next_position) * speed
+	move_and_slide()
+
+func actor_setup() -> void:
+	await get_tree().physics_frame
+	set_next_target()
+
+func set_next_target() -> void:
+	navigation.target_position = postions[postion_index]
+	postion_index = (postion_index + 1) % postions.size()
 
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is Player:
-		interactable.visible = true
-		player_in_area = true
-
-func _on_body_exited(body: Node2D) -> void:
-	if body is Player:
-		interactable.visible = false
-		player_in_area = false
-
-
-func _on_player_starts_interaction() -> void:
-	player_interacting = true
-
-
-func _on_player_stopped_interaction() -> void:
-	player_interacting = false
+func _on_interaction_started() -> void:
+	Events.interaction_started.emit()

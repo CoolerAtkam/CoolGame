@@ -1,28 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://baex1rii77ttc"]
+[gd_scene load_steps=6 format=3 uid="uid://bbaqb8mixc11"]
 
-[ext_resource type="Script" uid="uid://dyj763sa0xik6" path="res://scripts/npc.gd" id="1_abqhh"]
+[ext_resource type="Script" uid="uid://d2dboyq7cc4bb" path="res://scripts/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://teb68uuw1bnt" path="res://icon.svg" id="1_nh2m4"]
-[ext_resource type="Script" uid="uid://yb16ie3rfpj1" path="res://scripts/helpers/visiblity_changer.gd" id="3_rv78h"]
+[ext_resource type="Script" uid="uid://dpb4uutb3po3i" path="res://scripts/interaction_area.gd" id="3_rv78h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abqhh"]
-size = Vector2(202, 192)
+size = Vector2(26, 26)
 
-[node name="NPC" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rv78h"]
+size = Vector2(50, 50)
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
 script = ExtResource("1_abqhh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -64)
-texture = ExtResource("1_nh2m4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -64)
-shape = SubResource("RectangleShape2D_abqhh")
-
-[node name="Interactable" type="Sprite2D" parent="."]
-position = Vector2(-74, -130.25)
+position = Vector2(0, -13)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_nh2m4")
 
-[node name="VisibltyChanger" type="Node" parent="Interactable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_abqhh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 2.0
+target_desired_distance = 2.0
+path_postprocessing = 1
+simplify_path = true
+simplify_epsilon = 20.0
+debug_enabled = true
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
 script = ExtResource("3_rv78h")
-metadata/_custom_type_script = "uid://yb16ie3rfpj1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_rv78h")
+
+[connection signal="interaction_started" from="InteractionArea" to="." method="_on_interaction_started"]

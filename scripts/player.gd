@@ -1,8 +1,5 @@
 class_name Player
-extends CharacterBody2D
-
-@export var speed: float
-@export var lerp_streangth: float
+extends Entity
 
 @onready var interaction_timer: Timer = $InteractionTimer
 
@@ -20,9 +17,7 @@ func _physics_process(delta: float) -> void:
 	
 	var direction: Vector2 = Input.get_vector("left", "right", "up", "down")
 	
-	velocity = velocity.lerp(direction * speed, delta * lerp_streangth)
-	
-	move_and_slide()
+	move(direction, delta)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("iteraction_enter"):

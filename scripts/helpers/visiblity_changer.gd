@@ -3,9 +3,10 @@ extends Node
 
 @export var visiblity: bool = false
 
-@onready var parent: CanvasItem = $".."
+@onready var parent: Node = $".."
 
 
 func _ready() -> void:
-	if parent is CanvasItem:
+	if "visible" in parent:
+		@warning_ignore("unsafe_property_access")
 		parent.visible = visiblity

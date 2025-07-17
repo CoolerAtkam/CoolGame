@@ -7,9 +7,9 @@
 size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_g2els")
 speed = 200.0
-lerp_streangth = 4.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -64)

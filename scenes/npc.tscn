@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbaqb8mixc11"]
 
-[ext_resource type="Script" uid="uid://d2dboyq7cc4bb" path="res://scripts/npc.gd" id="1_abqhh"]
+[ext_resource type="Script" uid="uid://d2dboyq7cc4bb" path="res://scripts/NPC/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://teb68uuw1bnt" path="res://icon.svg" id="1_nh2m4"]
-[ext_resource type="Script" uid="uid://dpb4uutb3po3i" path="res://scripts/interaction_area.gd" id="3_rv78h"]
+[ext_resource type="Script" uid="uid://dpb4uutb3po3i" path="res://scripts/NPC/interaction_area.gd" id="3_rv78h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abqhh"]
 size = Vector2(26, 26)
@@ -12,9 +12,11 @@ size = Vector2(50, 50)
 
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_abqhh")
+speed = 100.0
+acceleration = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -13)

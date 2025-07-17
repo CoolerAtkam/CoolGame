@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jg2nchiq4s5n"
-path="res://.godot/imported/tiles be like insanity.png-79efcf0c8b705750378b0977422d623b.ctex"
+path="res://.godot/imported/tiles be like insanity.png-ca0c9095f16ac77db358b8c34437cd36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tiles be like insanity.png"
-dest_files=["res://.godot/imported/tiles be like insanity.png-79efcf0c8b705750378b0977422d623b.ctex"]
+source_file="res://assets/tiles/tiles be like insanity.png"
+dest_files=["res://.godot/imported/tiles be like insanity.png-ca0c9095f16ac77db358b8c34437cd36.ctex"]
 
 [params]
 

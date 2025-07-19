@@ -1,13 +1,11 @@
 class_name Npc
 extends Entity
 
-@export var target_markers: Node
-@export var target_postions: int
 @export var dialog: NpcDialog
 
 @onready var navigation: NavigationAgent2D = $NavigationAgent2D
 
-var postions: Array[Vector2]
+var postions: PackedVector2Array
 var postion_index: int = 0
 
 func _ready() -> void:
@@ -24,8 +22,10 @@ func _physics_process(delta: float) -> void:
 
 func set_target_postions() -> void:
 	postions.append(global_position)
-	for target: Marker2D in target_markers.get_children():
-		postions.append(target.global_position)
+	for target: Node in get_children():
+		if target is Marker2D:
+			postions.append((target as Marker2D).global_position)
+			target.queue_free()
 
 func actor_setup() -> void:
 	await get_tree().physics_frame

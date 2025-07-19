@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbaqb8mixc11"]
 
-[ext_resource type="Script" uid="uid://d2dboyq7cc4bb" path="res://scripts/NPC/npc.gd" id="1_abqhh"]
+[ext_resource type="Script" uid="uid://d2dboyq7cc4bb" path="res://scripts/entities/NPC/npc.gd" id="1_abqhh"]
 [ext_resource type="Texture2D" uid="uid://teb68uuw1bnt" path="res://icon.svg" id="1_nh2m4"]
-[ext_resource type="Script" uid="uid://dpb4uutb3po3i" path="res://scripts/NPC/interaction_area.gd" id="3_rv78h"]
+[ext_resource type="Script" uid="uid://dpb4uutb3po3i" path="res://scripts/entities/NPC/interaction_area.gd" id="3_rv78h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abqhh"]
 size = Vector2(26, 26)

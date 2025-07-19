@@ -1,6 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b26qttukwxpe5"]
-
-[ext_resource type="Script" uid="uid://yb16ie3rfpj1" path="res://scripts/helpers/visiblity_changer.gd" id="1_pkx4w"]
+[gd_scene load_steps=2 format=3 uid="uid://b26qttukwxpe5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0a082"]
 font_size = 50
@@ -30,7 +28,3 @@ grow_vertical = 0
 layout_mode = 2
 text = "hello"
 label_settings = SubResource("LabelSettings_0a082")
-
-[node name="VisibltyChanger" type="Node" parent="."]
-script = ExtResource("1_pkx4w")
-metadata/_custom_type_script = "uid://yb16ie3rfpj1"
